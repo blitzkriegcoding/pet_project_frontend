@@ -39,6 +39,9 @@ export class WeatherController {
         } else {
           this.$scope.resumeTable = false;
         }
-    }, (err) => {this.$log.log(err)} );
+    }, (err) => {
+      this.$log.log(err);
+      this.$scope.resumeTable = false;
+    } );
   }
 }
