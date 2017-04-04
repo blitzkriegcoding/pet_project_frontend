@@ -10,10 +10,10 @@ exports.config = {
 
   // Capabilities to be passed to the webdriver instance.
   capabilities: {
-    'browserName': 'chrome'
+    'browserName': 'firefox'
   },
 
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://localhost:5000/',
 
   // Spec patterns are relative to the current working directory when
   // protractor is called.

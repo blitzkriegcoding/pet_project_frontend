@@ -11,7 +11,9 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
  */
 // bower:scss
 // endbower
-
+body {
+  background-color: #ededed;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -27,6 +29,11 @@ $icon-font-path: "../../bootstrap-sass/assets/fonts/bootstrap/";
   }
 }
 
+.center-button {
+  position:absolute;
+  top: 50%;
+  left: 45%
+}
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

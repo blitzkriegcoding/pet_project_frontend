@@ -2,6 +2,7 @@
 
 var path = require('path');
 var gulp = require('gulp');
+var exec = require('exec')
 var conf = require('./conf');
 
 var browserSync = require('browser-sync');
@@ -23,7 +24,10 @@ function browserSyncInit(baseDir, browser) {
 
   var server = {
     baseDir: baseDir,
-    routes: routes
+    routes: routes,
+    middleware: [
+      proxyMiddleware('/locations/get_current_temp/', { target: 'http://localhost:3002' })
+    ]    
   };
 
   /*
@@ -38,7 +42,8 @@ function browserSyncInit(baseDir, browser) {
   browserSync.instance = browserSync.init({
     startPath: '/',
     server: server,
-    browser: browser
+    browser: browser,
+    port: 5000,
   });
 }
 
@@ -49,6 +54,12 @@ browserSync.use(browserSyncSpa({
 gulp.task('serve', ['watch'], function () {
   browserSyncInit([path.join(conf.paths.tmp, '/serve'), conf.paths.src]);
 });
+
+gulp.task('rails', function() {
+  exec('~/transic_uc_app_backend/rails server', () => {});
+});
+ 
+gulp.task('serve:full-stack', ['rails', 'serve']);
 
 gulp.task('serve:dist', ['build'], function () {
   browserSyncInit(conf.paths.dist);

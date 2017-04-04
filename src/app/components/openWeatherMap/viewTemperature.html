@@ -1,0 +1,30 @@
+<div class="container">
+  <div id="result" class="col-xs-12 col-sm-12 col-md-6 col-lg-offset-4 col-lg-4" > 
+  <div class="panel panel-default">
+    <div class="panel-heading">      
+        <div class="form-group">
+          <label for="location">El clima en estos momentos para:</label>       
+          <select id="location_select" name="selectedLocation" 
+                  ng-model="selectedLocation">
+                  <option value=''>Seleccione locación</option>
+                  <option value="{{location.id}}" ng-repeat="location in locations">{{location.name_location}}</option>
+
+          </select>
+        </div>
+      </div>
+      <div ng-show="resumeTable">
+        <div class="panel-body">
+          Esta es una SPA (Single Page Application) para visualizar el clima en diversas zonas de Chile
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item">Cielo <img ng-src="{{weatherData.icon}}" alt=""> {{weatherData.main}}, {{weatherData.description}} </li>
+          <li class="list-group-item">Temperatura actual: {{weatherData.current_temp_celsius}} </li>
+          <li class="list-group-item">Temp. Máxima: {{weatherData.max_temp_celsius}} °C</li>
+          <li class="list-group-item">Temp. Mínima: {{weatherData.min_temp_celsius}} °C</li>
+          <li class="list-group-item">Humedad: {{weatherData.humidity}} %</li>
+          <li class="list-group-item">Velocidad del viento: {{weatherData.wind_speed}} mph</li>
+        </ul>  
+      </div>
+  </div>    
+  </div>
+</div>
